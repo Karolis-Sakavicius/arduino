@@ -13,5 +13,22 @@
 //= require jquery
 //= require bootstrap-sprockets
 //= require jquery_ujs
-//= require turbolinks
 //= require_tree .
+
+jQuery.each( [ 'patch', 'delete' ], function( i, method ) {
+  jQuery[ method ] = function( url, data, callback, type ) {
+    if ( jQuery.isFunction( data ) ) {
+      type = type || callback;
+      callback = data;
+      data = undefined;
+    }
+
+    return jQuery.ajax( jQuery.extend( {
+      url: url,
+      type: method,
+      dataType: type,
+      data: data,
+      success: callback
+    }, jQuery.isPlainObject( url ) && url ) );
+  };
+} );

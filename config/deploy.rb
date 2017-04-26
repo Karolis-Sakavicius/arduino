@@ -1,7 +1,7 @@
 set :application, 'arduino'
 set :repo_url, 'git@github.com:Karolis-Sakavicius/arduino.git'
 
-# ask :branch, proc { `git rev-parse --abbrev-ref HEAD`.chomp }
+ask :branch, proc { `git rev-parse --abbrev-ref HEAD`.chomp }
 
 # set :deploy_to, '/var/www/my_app'
 # set :scm, :git
