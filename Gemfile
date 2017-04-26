@@ -39,6 +39,7 @@ gem 'unicorn'
 
 gem 'rubyserial'
 gem 'bootstrap-sass', '~> 3.3.7'
+gem 'bootstrap_colorpicker_rails'
 
 # Use Capistrano for deployment
 # gem 'capistrano-rails', group: :development
