@@ -6,4 +6,8 @@ class LedsController < ApplicationController
   def update
     LED.set(params[:id], params[:red], params[:green], params[:blue])
   end
+
+  def destroy
+    LED.reset(params[:id].to_i)
+  end
 end

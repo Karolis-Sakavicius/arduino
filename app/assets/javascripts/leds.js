@@ -4,4 +4,10 @@ $(document).ready(function() {
       console.log('OK');
     });
   });
+
+  $(document).on('click', '.reset-btn', function() {
+    $.delete('leds/' + $(this).attr('data-size'), function() {
+      console.log('OK');
+    });
+  });
 });
