@@ -1,14 +1,22 @@
 <!DOCTYPE html>
-<html>
-  <head>
-    <title>Arduino</title>
-    <%= csrf_meta_tags %>
+<html lang="en">
+<head>
+  <title>Arduino</title>
+  <%= csrf_meta_tags %>
 
-    <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track': 'reload' %>
-    <%= javascript_include_tag 'application', 'data-turbolinks-track': 'reload' %>
-  </head>
+  <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track': 'reload' %>
+  <%= javascript_include_tag 'application', 'data-turbolinks-track': 'reload' %>
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link href="https://fonts.googleapis.com/css?family=Lato" rel="stylesheet" type="text/css">
+</head>
+<body>
 
-  <body>
-    <%= yield %>
-  </body>
+<div class="jumbotron text-center">
+  <h1>LED Panel Control Page</h1>
+  <p>Illuminate the world!</p>
+</div>
+
+<%= yield %>
+
+</body>
 </html>
