@@ -37,6 +37,7 @@ gem 'capistrano-rvm', '~> 0.1.0'
 gem 'capistrano-bundler'
 gem 'unicorn'
 
+gem 'rubyserial'
 gem 'bootstrap-sass', '~> 3.3.7'
 
 # Use Capistrano for deployment
