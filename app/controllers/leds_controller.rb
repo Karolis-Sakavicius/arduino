@@ -1,5 +1,6 @@
 class LedsController < ApplicationController
   def index
+    @size = params[:size].to_i
   end
 
   def update

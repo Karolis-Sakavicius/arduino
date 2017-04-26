@@ -1,1 +1,21 @@
-<button id="turn-on" type="button" class="btn btn-primary">Generate grid!</button>
+<div class='container text-center'>
+  <% if @size.zero? %>
+    <form class="form-inline">
+      <div class="form-group">
+        <label for="email">Grid size:</label>
+        <input type="text" class="form-control" id="size" name="size">
+      </div>
+      <button type="submit" class="btn btn-primary">Generate grid!</button>
+    </form>
+  <% else %>
+
+  <% @size.to_i.times do |i| %>
+    <div class='row'>
+      <% @size.times do |u| %>
+        <button type="button" class="btn btn-default panel-btn" data-id='<%= i * @size + u + 1 %>'></button>
+      <% end %>
+    </div>
+  <% end %>
+
+  <% end %>
+</div>
