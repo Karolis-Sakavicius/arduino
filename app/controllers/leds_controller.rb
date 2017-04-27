@@ -1,6 +1,7 @@
 class LedsController < ApplicationController
   def index
     @size = params[:size].to_i
+    @state = JSON.parse(LED.current_state)['data']
   end
 
   def update

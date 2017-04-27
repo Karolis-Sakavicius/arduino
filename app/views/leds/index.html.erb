@@ -9,16 +9,21 @@
     </form>
   <% else %>
 
-  <% @size.to_i.times do |i| %>
-    <div class='row'>
-      <% @size.times do |u| %>
-        <button type="button" class="btn btn-default panel-btn" data-id='<%= i * @size + u + 1 %>'></button>
-      <% end %>
-    </div>
-  <% end %>
-  <br />
-  <br />
-  <button type="button" class="btn btn-default reset-btn" data-size=<%= @size %>>Reset panel</button>
+    <% @size.to_i.times do |i| %>
+      <div class='row'>
+        <% @size.times do |u| %>
+          <button
+            type="button"
+            class="btn btn-default panel-btn"
+            data-id='<%= i * @size + u + 1 %>'
+            style='background-color: rgba(<%= @state[i * @size + u]['r'] %>, <%= @state[i * @size + u]['g'] %>, <%= @state[i * @size + u]['b'] %>, 1)'
+          ></button>
+        <% end %>
+      </div>
+    <% end %>
+    <br />
+    <br />
+    <button type="button" class="btn btn-default reset-btn" data-size=<%= @size %>>Reset panel</button>
 
   <% end %>
 </div>
