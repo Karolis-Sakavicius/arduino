@@ -17,7 +17,7 @@
             class="btn btn-default panel-btn"
             data-id='<%= i * @size + u + 1 %>'
             style='background-color: rgba(<%= @state[i * @size + u]['r'] %>, <%= @state[i * @size + u]['g'] %>, <%= @state[i * @size + u]['b'] %>, 1)'
-          ></button>
+          ><%= LED.off?(@state[i * @size + u]) ? 'OFF' : '' %></button>
         <% end %>
       </div>
     <% end %>

@@ -28,4 +28,12 @@ class LED
 
     response
   end
+
+  def self.off?(state)
+    if state['r'] == 0 && state['g'] == 0 && state['b'] == 0
+      return true
+    end
+
+    return false
+  end
 end
