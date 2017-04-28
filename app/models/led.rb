@@ -14,7 +14,7 @@ class LED
   end
 
   def self.current_state
-    serialport = Serial.new '/dev/ttyACM0'
+    serialport = Serial.new '/dev/arduino'
 
     serialport.write("a\n")
     response = ''

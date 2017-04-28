@@ -15,7 +15,10 @@ $(document).ready(function() {
 
   $(document).on('click', '.reset-btn', function() {
     $.delete('leds/' + $(this).attr('data-size'), function() {
-      console.log('OK');
+      $('.panel-btn').each(function() {
+        this.style.backgroundColor = '#000000';
+        this.innerHTML = 'OFF';
+      });
     });
   });
 });
