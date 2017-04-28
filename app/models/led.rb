@@ -32,6 +32,14 @@ class LED
     response
   end
 
+  def self.fill_color(size, red, green, blue)
+    serialport = self.connection
+
+    size.times do |led|
+      serialport.write([led + 1, red, green, blue].join(' ')+ "\n")
+    end
+  end
+
   def self.off?(state)
     if state['r'] == 0 && state['g'] == 0 && state['b'] == 0
       return true
