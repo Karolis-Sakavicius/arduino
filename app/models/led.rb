@@ -48,6 +48,10 @@ class LED
     return false
   end
 
+  def self.off(size)
+    self.fill_color(size, 0, 0, 0)
+  end
+
   def self.connection
     # establish connection and wipe previous buffer
     serialport = Serial.new '/dev/arduino'
@@ -61,7 +65,7 @@ class LED
       red = rand(256)
       green = rand(256)
       blue = rand(256)
-      LED.fill_color(size, red, green, blue)
+      self.fill_color(size, red, green, blue)
       sleep(interval)
     end
   end

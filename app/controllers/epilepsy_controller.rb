@@ -7,4 +7,10 @@ class EpilepsyController < ApplicationController
 
     render json: {}
   end
+
+  def destroy
+    LED.off(params[:id].to_i)
+
+    render json: {}
+  end
 end
