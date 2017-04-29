@@ -55,4 +55,14 @@ class LED
 
     serialport
   end
+
+  def self.epilepsy(size, count, interval)
+    count.times do
+      red = rand(256)
+      green = rand(256)
+      blue = rand(256)
+      LED.fill_color(size, red, green, blue)
+      sleep(interval)
+    end
+  end
 end

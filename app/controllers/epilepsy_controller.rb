@@ -2,12 +2,9 @@ class EpilepsyController < ApplicationController
   def index
   end
 
-  def update
-    red = rand(256)
-    green = rand(256)
-    blue = rand(256)
-    LED.fill_color(params[:id].to_i, red, green, blue)
+  def create
+    LED.epilepsy(params[:size].to_i, params[:times].to_i, params[:interval].to_f / 1000)
 
-    render json: { red: red, green: green, blue: blue }
+    render json: {}
   end
 end
