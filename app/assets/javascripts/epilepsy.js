@@ -1,5 +1,5 @@
 $(document).ready(function() {
   $(document).on('click', '.epilepsy-start', function() {
-    $.post('epilepsy/', { size: 9, times: 30, interval: 100 });
+    $.post('epilepsy/', { size: $('#size').val(), times: $('#times').val(), interval: $('#speed').val() });
   });
 });
