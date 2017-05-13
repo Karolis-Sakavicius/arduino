@@ -55,7 +55,7 @@ class LED
   def self.connection
     # establish connection and wipe previous buffer
     serialport = Serial.new '/dev/arduino'
-    serialport.read(64)
+    serialport.read(1024)
 
     serialport
   end
