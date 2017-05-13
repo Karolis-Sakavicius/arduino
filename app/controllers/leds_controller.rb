@@ -5,7 +5,11 @@ class LedsController < ApplicationController
   end
 
   def update
-    LED.set(params[:id], params[:red], params[:green], params[:blue])
+    if params[:number].nil?
+      LED.set(params[:id], params[:red], params[:green], params[:blue])
+    else
+      LED.draw_number(params[:number], params[:red], params[:green], params[:blue])
+    end
 
     render plain: 'OK'
   end

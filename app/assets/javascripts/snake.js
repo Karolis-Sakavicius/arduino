@@ -1,7 +1,7 @@
 $(document).ready(function() {
   snake_positions = [[0, 0], [0, 1], [0, 2]];
   head_direction = 1;
-  food_position = [2, 2];
+  food_position = null;
 
   arrayToId = function(posX, posY) {
     return (posX * 9 + posY + 1);
@@ -23,10 +23,6 @@ $(document).ready(function() {
     return snake_positions[0][1];
   };
 
-  drawHead = function() {
-    $.patch('leds/' + arrayToId(headX(), headY()), { 'red': 0, 'green': 0, 'blue': 255 });
-  };
-
   drawTail = function(hposx, hposy) {
     $.patch('leds/' + arrayToId(tailX(), tailY()), { 'red': 0, 'green': 0, 'blue': 0 }, function() {
       snake_positions.shift();
@@ -39,6 +35,16 @@ $(document).ready(function() {
       drawHead();
     });
   };
+
+  drawHead = function() {
+    $.patch('leds/' + arrayToId(headX(), headY()), { 'red': 0, 'green': 0, 'blue': 255 }, function() {
+      setTimeout(gameTick, 750);
+    });
+  };
+
+  drawScore = function() {
+    $.patch('leds/9', { 'number': snake_positions.length, 'red': 255, 'green': 0, 'blue': 0 });
+  }
 
   getRandomInt = function(min, max) {
     return Math.floor(Math.random() * (max - min + 1)) + min;
@@ -62,61 +68,95 @@ $(document).ready(function() {
     drawFood();
   };
 
-  $.patch('leds/1', { 'red': 0, 'green': 0, 'blue': 255 }, function() {
-    $.patch('leds/2', { 'red': 0, 'green': 0, 'blue': 255 }, function() {
-      $.patch('leds/3', { 'red': 0, 'green': 0, 'blue': 255 }, function() {
-        console.log('Ready to play0');
+  newGame = function() {
+    $.patch('leds/1', { 'red': 0, 'green': 0, 'blue': 255 }, function() {
+      $.patch('leds/2', { 'red': 0, 'green': 0, 'blue': 255 }, function() {
+        $.patch('leds/3', { 'red': 0, 'green': 0, 'blue': 255 }, function() {
+          console.log('Ready to play0');
+        });
       });
     });
-  });
 
-  drawFood();
+    snake_positions = [[0, 0], [0, 1], [0, 2]];
+    head_direction = 1;
 
-  $('.snake-right').click(function() {
-    if (headY() + 1 < 9) {
-      snake_positions.push([headX(), headY() + 1]);
-      if (JSON.stringify([headX(), headY()]) != JSON.stringify(food_position)) {
-        drawTail(headX(), headY());
+    generateNewFood();
+  };
+
+  gameTick = function() {
+    if (head_direction == 1) {
+      if (headY() + 1 < 9) {
+        snake_positions.push([headX(), headY() + 1]);
+        if (JSON.stringify([headX(), headY()]) != JSON.stringify(food_position)) {
+          drawTail(headX(), headY());
+        }
+        else {
+          generateNewFood();
+        }
       }
       else {
-        generateNewFood();
+        drawScore();
       }
     }
+    else if (head_direction == 2) {
+      if (headX() + 1 < 9) {
+        snake_positions.push([headX() + 1, headY()]);
+        if (JSON.stringify([headX(), headY()]) != JSON.stringify(food_position)) {
+          drawTail();
+        }
+        else {
+          generateNewFood();
+        }
+      }
+      else {
+        drawScore();
+      }
+    }
+    else if (head_direction == 3) {
+      if (headY() - 1 >= 0) {
+        snake_positions.push([headX(), headY() - 1]);
+        if (JSON.stringify([headX(), headY()]) != JSON.stringify(food_position)) {
+          drawTail();
+        }
+        else {
+          generateNewFood();
+        }
+      }
+      else {
+        drawScore();
+      }
+    }
+    else {
+      if (headX() - 1 >= 0) {
+        snake_positions.push([headX() - 1, headY()]);
+        if (JSON.stringify([headX(), headY()]) != JSON.stringify(food_position)) {
+          drawTail();
+        }
+        else {
+          generateNewFood();
+        }
+      }
+      else {
+        drawScore();
+      }
+    }
+  };
+
+  $('.snake-right').click(function() {
+    head_direction = 1;
   });
 
   $('.snake-down').click(function() {
-    if (headX() + 1 < 9) {
-      snake_positions.push([headX() + 1, headY()]);
-      if (JSON.stringify([headX(), headY()]) != JSON.stringify(food_position)) {
-        drawTail();
-      }
-      else {
-        generateNewFood();
-      }
-    }
+    head_direction = 2;
   });
 
   $('.snake-up').click(function() {
-    if (headX() - 1 >= 0) {
-      snake_positions.push([headX() - 1, headY()]);
-      if (JSON.stringify([headX(), headY()]) != JSON.stringify(food_position)) {
-        drawTail();
-      }
-      else {
-        generateNewFood();
-      }
-    }
+    head_direction = 4;
   });
 
   $('.snake-left').click(function() {
-    if (headY() - 1 >= 0) {
-      snake_positions.push([headX(), headY() - 1]);
-      if (JSON.stringify([headX(), headY()]) != JSON.stringify(food_position)) {
-        drawTail();
-      }
-      else {
-        generateNewFood();
-      }
-    }
+    head_direction = 3;
   });
+
+  newGame();
 });

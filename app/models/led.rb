@@ -11,6 +11,159 @@ class LED
     end
   end
 
+  def self.draw_number(number, red, green, blue)
+    LED.off(81)
+    first = number.to_s[0].to_i
+    second = number.to_s[1].to_i
+
+    self.draw_number_by_offset(first, 0, red, green, blue)
+    self.draw_number_by_offset(second, 5, red, green, blue)
+  end
+
+  def self.draw_number_by_offset(number, offset, red, green, blue)
+    return if number.nil?
+
+    serialport = self.connection
+
+    if number == 1
+      serialport.write([4 + offset, red, green, blue].join(' ')+ "\n")
+      serialport.write([13 + offset, red, green, blue].join(' ')+ "\n")
+      serialport.write([22 + offset, red, green, blue].join(' ')+ "\n")
+      serialport.write([31 + offset, red, green, blue].join(' ')+ "\n")
+      serialport.write([40 + offset, red, green, blue].join(' ')+ "\n")
+    end
+
+    if number == 2
+      serialport.write([1 + offset, red, green, blue].join(' ')+ "\n")
+      serialport.write([2 + offset, red, green, blue].join(' ')+ "\n")
+      serialport.write([3 + offset, red, green, blue].join(' ')+ "\n")
+      serialport.write([4 + offset, red, green, blue].join(' ')+ "\n")
+      serialport.write([13 + offset, red, green, blue].join(' ')+ "\n")
+      serialport.write([22 + offset, red, green, blue].join(' ')+ "\n")
+      serialport.write([21 + offset, red, green, blue].join(' ')+ "\n")
+      serialport.write([20 + offset, red, green, blue].join(' ')+ "\n")
+      serialport.write([19 + offset, red, green, blue].join(' ')+ "\n")
+      serialport.write([28 + offset, red, green, blue].join(' ')+ "\n")
+      serialport.write([37 + offset, red, green, blue].join(' ')+ "\n")
+      serialport.write([38 + offset, red, green, blue].join(' ')+ "\n")
+      serialport.write([39 + offset, red, green, blue].join(' ')+ "\n")
+      serialport.write([40 + offset, red, green, blue].join(' ')+ "\n")
+    end
+
+    if number == 3
+      serialport.write([1 + offset, red, green, blue].join(' ')+ "\n")
+      serialport.write([2 + offset, red, green, blue].join(' ')+ "\n")
+      serialport.write([3 + offset, red, green, blue].join(' ')+ "\n")
+      serialport.write([4 + offset, red, green, blue].join(' ')+ "\n")
+      serialport.write([13 + offset, red, green, blue].join(' ')+ "\n")
+      serialport.write([19 + offset, red, green, blue].join(' ')+ "\n")
+      serialport.write([20 + offset, red, green, blue].join(' ')+ "\n")
+      serialport.write([21 + offset, red, green, blue].join(' ')+ "\n")
+      serialport.write([22 + offset, red, green, blue].join(' ')+ "\n")
+      serialport.write([31 + offset, red, green, blue].join(' ')+ "\n")
+      serialport.write([37 + offset, red, green, blue].join(' ')+ "\n")
+      serialport.write([38 + offset, red, green, blue].join(' ')+ "\n")
+      serialport.write([39 + offset, red, green, blue].join(' ')+ "\n")
+      serialport.write([40 + offset, red, green, blue].join(' ')+ "\n")
+    end
+
+    if number == 4
+      serialport.write([1 + offset, red, green, blue].join(' ')+ "\n")
+      serialport.write([4 + offset, red, green, blue].join(' ')+ "\n")
+      serialport.write([10 + offset, red, green, blue].join(' ')+ "\n")
+      serialport.write([13 + offset, red, green, blue].join(' ')+ "\n")
+      serialport.write([19 + offset, red, green, blue].join(' ')+ "\n")
+      serialport.write([20 + offset, red, green, blue].join(' ')+ "\n")
+      serialport.write([21 + offset, red, green, blue].join(' ')+ "\n")
+      serialport.write([22 + offset, red, green, blue].join(' ')+ "\n")
+      serialport.write([31 + offset, red, green, blue].join(' ')+ "\n")
+      serialport.write([40 + offset, red, green, blue].join(' ')+ "\n")
+    end
+
+    if number == 5
+      serialport.write([1 + offset, red, green, blue].join(' ')+ "\n")
+      serialport.write([2 + offset, red, green, blue].join(' ')+ "\n")
+      serialport.write([3 + offset, red, green, blue].join(' ')+ "\n")
+      serialport.write([4 + offset, red, green, blue].join(' ')+ "\n")
+      serialport.write([10 + offset, red, green, blue].join(' ')+ "\n")
+      serialport.write([22 + offset, red, green, blue].join(' ')+ "\n")
+      serialport.write([21 + offset, red, green, blue].join(' ')+ "\n")
+      serialport.write([20 + offset, red, green, blue].join(' ')+ "\n")
+      serialport.write([19 + offset, red, green, blue].join(' ')+ "\n")
+      serialport.write([31 + offset, red, green, blue].join(' ')+ "\n")
+      serialport.write([37 + offset, red, green, blue].join(' ')+ "\n")
+      serialport.write([38 + offset, red, green, blue].join(' ')+ "\n")
+      serialport.write([39 + offset, red, green, blue].join(' ')+ "\n")
+      serialport.write([40 + offset, red, green, blue].join(' ')+ "\n")
+    end
+
+    if number == 6
+      serialport.write([1 + offset, red, green, blue].join(' ')+ "\n")
+      serialport.write([2 + offset, red, green, blue].join(' ')+ "\n")
+      serialport.write([3 + offset, red, green, blue].join(' ')+ "\n")
+      serialport.write([4 + offset, red, green, blue].join(' ')+ "\n")
+      serialport.write([10 + offset, red, green, blue].join(' ')+ "\n")
+      serialport.write([19 + offset, red, green, blue].join(' ')+ "\n")
+      serialport.write([20 + offset, red, green, blue].join(' ')+ "\n")
+      serialport.write([21 + offset, red, green, blue].join(' ')+ "\n")
+      serialport.write([22 + offset, red, green, blue].join(' ')+ "\n")
+      serialport.write([28 + offset, red, green, blue].join(' ')+ "\n")
+      serialport.write([31 + offset, red, green, blue].join(' ')+ "\n")
+      serialport.write([37 + offset, red, green, blue].join(' ')+ "\n")
+      serialport.write([38 + offset, red, green, blue].join(' ')+ "\n")
+      serialport.write([39 + offset, red, green, blue].join(' ')+ "\n")
+      serialport.write([40 + offset, red, green, blue].join(' ')+ "\n")
+    end
+
+    if number == 7
+      serialport.write([1 + offset, red, green, blue].join(' ')+ "\n")
+      serialport.write([2 + offset, red, green, blue].join(' ')+ "\n")
+      serialport.write([3 + offset, red, green, blue].join(' ')+ "\n")
+      serialport.write([4 + offset, red, green, blue].join(' ')+ "\n")
+      serialport.write([13 + offset, red, green, blue].join(' ')+ "\n")
+      serialport.write([22 + offset, red, green, blue].join(' ')+ "\n")
+      serialport.write([31 + offset, red, green, blue].join(' ')+ "\n")
+      serialport.write([40 + offset, red, green, blue].join(' ')+ "\n")
+    end
+
+    if number == 8
+      serialport.write([1 + offset, red, green, blue].join(' ')+ "\n")
+      serialport.write([2 + offset, red, green, blue].join(' ')+ "\n")
+      serialport.write([3 + offset, red, green, blue].join(' ')+ "\n")
+      serialport.write([4 + offset, red, green, blue].join(' ')+ "\n")
+      serialport.write([10 + offset, red, green, blue].join(' ')+ "\n")
+      serialport.write([13 + offset, red, green, blue].join(' ')+ "\n")
+      serialport.write([19 + offset, red, green, blue].join(' ')+ "\n")
+      serialport.write([20 + offset, red, green, blue].join(' ')+ "\n")
+      serialport.write([21 + offset, red, green, blue].join(' ')+ "\n")
+      serialport.write([22 + offset, red, green, blue].join(' ')+ "\n")
+      serialport.write([28 + offset, red, green, blue].join(' ')+ "\n")
+      serialport.write([31 + offset, red, green, blue].join(' ')+ "\n")
+      serialport.write([37 + offset, red, green, blue].join(' ')+ "\n")
+      serialport.write([38 + offset, red, green, blue].join(' ')+ "\n")
+      serialport.write([39 + offset, red, green, blue].join(' ')+ "\n")
+      serialport.write([40 + offset, red, green, blue].join(' ')+ "\n")
+    end
+
+    if number == 9
+      serialport.write([1 + offset, red, green, blue].join(' ')+ "\n")
+      serialport.write([2 + offset, red, green, blue].join(' ')+ "\n")
+      serialport.write([3 + offset, red, green, blue].join(' ')+ "\n")
+      serialport.write([4 + offset, red, green, blue].join(' ')+ "\n")
+      serialport.write([10 + offset, red, green, blue].join(' ')+ "\n")
+      serialport.write([13 + offset, red, green, blue].join(' ')+ "\n")
+      serialport.write([19 + offset, red, green, blue].join(' ')+ "\n")
+      serialport.write([20 + offset, red, green, blue].join(' ')+ "\n")
+      serialport.write([21 + offset, red, green, blue].join(' ')+ "\n")
+      serialport.write([22 + offset, red, green, blue].join(' ')+ "\n")
+      serialport.write([31 + offset, red, green, blue].join(' ')+ "\n")
+      serialport.write([37 + offset, red, green, blue].join(' ')+ "\n")
+      serialport.write([38 + offset, red, green, blue].join(' ')+ "\n")
+      serialport.write([39 + offset, red, green, blue].join(' ')+ "\n")
+      serialport.write([40 + offset, red, green, blue].join(' ')+ "\n")
+    end
+  end
+
   def self.current_state
     serialport = self.connection
 
