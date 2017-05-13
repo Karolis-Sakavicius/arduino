@@ -3,5 +3,6 @@ Rails.application.routes.draw do
   resources :home, only: :index
   resources :leds, only: [:index, :update, :destroy]
   resources :epilepsy, only: [:index, :create, :destroy]
+  resources :snake, only: :index
   root 'home#index'
 end
