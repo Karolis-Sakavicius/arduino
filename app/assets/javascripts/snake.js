@@ -54,9 +54,9 @@ $(document).ready(function() {
     food_position = null;
     while (!food_position) {
       new_position = [getRandomInt(0, 8), getRandomInt(0, 8)];
-      taken = false;
+      var taken = false;
       $.each(snake_positions, function(_index, value) {
-        if (JSON.stringify(value) == new_position) {
+        if (JSON.stringify(value) == JSON.stringify(new_position)) {
           taken = true;
         }
       });
@@ -83,9 +83,20 @@ $(document).ready(function() {
     generateNewFood();
   };
 
+  collisionDetection = function(x, y) {
+    var collision = false;
+    $.each(snake_positions, function(_index, value) {
+      if (JSON.stringify(value) == JSON.stringify([x, y])) {
+        collision = true;
+      }
+    });
+
+    return collision;
+  };
+
   gameTick = function() {
     if (head_direction == 1) {
-      if (headY() + 1 < 9) {
+      if ((headY() + 1 < 9) && (!collisionDetection(headX(), headY() + 1))) {
         snake_positions.push([headX(), headY() + 1]);
         if (JSON.stringify([headX(), headY()]) != JSON.stringify(food_position)) {
           drawTail(headX(), headY());
@@ -99,7 +110,7 @@ $(document).ready(function() {
       }
     }
     else if (head_direction == 2) {
-      if (headX() + 1 < 9) {
+      if ((headX() + 1 < 9) && (!collisionDetection(headX() + 1, headY()))) {
         snake_positions.push([headX() + 1, headY()]);
         if (JSON.stringify([headX(), headY()]) != JSON.stringify(food_position)) {
           drawTail();
@@ -113,7 +124,7 @@ $(document).ready(function() {
       }
     }
     else if (head_direction == 3) {
-      if (headY() - 1 >= 0) {
+      if ((headY() - 1 >= 0) && (!collisionDetection(headX(), headY() - 1))) {
         snake_positions.push([headX(), headY() - 1]);
         if (JSON.stringify([headX(), headY()]) != JSON.stringify(food_position)) {
           drawTail();
@@ -127,7 +138,7 @@ $(document).ready(function() {
       }
     }
     else {
-      if (headX() - 1 >= 0) {
+      if ((headX() - 1 >= 0) && (!collisionDetection(headX() - 1, headY()))) {
         snake_positions.push([headX() - 1, headY()]);
         if (JSON.stringify([headX(), headY()]) != JSON.stringify(food_position)) {
           drawTail();
@@ -156,6 +167,10 @@ $(document).ready(function() {
 
   $('.snake-left').click(function() {
     head_direction = 3;
+  });
+
+  $('.snake-restart').click(function() {
+    location.reload();
   });
 
   newGame();
