@@ -8,7 +8,7 @@ class LED
   end
 
   def self.draw_number(number, red, green, blue)
-    LED.off(81)
+    LED.reset(9)
     first = number.to_s[0]
     second = number.to_s[1]
 
@@ -233,7 +233,7 @@ class LED
       red = rand(256)
       green = rand(256)
       blue = rand(256)
-      self.fill_color(size, red, green, blue)
+      self.fill_color(size * size, red, green, blue)
       sleep(interval)
     end
   end

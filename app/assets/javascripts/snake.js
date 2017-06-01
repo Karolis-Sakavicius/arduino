@@ -170,8 +170,8 @@ $(document).ready(function() {
   });
 
   $('.snake-restart').click(function() {
-    location.reload();
+    $.delete('leds/9', function() {
+      newGame();
+    });
   });
-
-  newGame();
 });
