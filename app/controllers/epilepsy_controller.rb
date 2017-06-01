@@ -9,7 +9,7 @@ class EpilepsyController < ApplicationController
   end
 
   def destroy
-    LED.off(params[:id].to_i)
+    LED.reset(params[:id].to_i)
 
     render json: {}
   end

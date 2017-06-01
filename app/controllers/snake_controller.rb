@@ -1,5 +1,5 @@
 class SnakeController < ApplicationController
   def index
-    LED.off(81)
+    LED.reset(9)
   end
 end

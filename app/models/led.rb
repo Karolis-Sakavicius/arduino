@@ -4,11 +4,7 @@ class LED
   end
 
   def self.reset(size)
-    serialport = self.connection
-
-    (size * size).times do |led|
-      serialport.write((led + 1).to_s + ' 0 0 0' + "\n")
-    end
+    self.fill_color(size * size, 0, 0, 0)
   end
 
   def self.draw_number(number, red, green, blue)
@@ -222,10 +218,6 @@ class LED
     end
 
     return false
-  end
-
-  def self.off(size)
-    self.fill_color(size, 0, 0, 0)
   end
 
   def self.connection
