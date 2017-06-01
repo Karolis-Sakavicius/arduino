@@ -47,3 +47,19 @@ h4 {
     height: 100%;
     margin-bottom: 10px;
 }
+.home-link {
+    cursor: pointer;
+    color: black;
+}
+@media (min-width: 1200px) {
+    .home-link:hover {
+        color: black;
+        background-color: rgba(244, 81, 30, 0.4);
+    }
+}
+
+.home-link img {
+    padding-top: 12px;
+    display: block;
+    margin: 0 auto;
+}

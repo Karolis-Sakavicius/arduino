@@ -2,20 +2,20 @@
   <h2>Pick what you want to do</h2>
   <br>
   <div class="row slideanim">
-    <div class="col-sm-4">
-      <span class="glyphicon glyphicon-off logo-small"></span>
+    <a href='leds' class="col-sm-4 home-link">
+      <img src='<%= image_url('video.png') %>'>
       <h4>FIDDLE AROUND</h4>
       <p>Control LEDs individually with your mouse!</p>
-    </div>
-    <div class="col-sm-4">
-      <span class="glyphicon glyphicon-heart logo-small"></span>
-      <h4>EPILEPSY MODE</h4>
-      <p>Play some animations on LED panel...</p>
-    </div>
-    <div class="col-sm-4">
-      <span class="glyphicon glyphicon-lock logo-small"></span>
+    </a>
+    <a href='epilepsy' class="col-sm-4 home-link">
+        <img src='<%= image_url('brain.png') %>'>
+        <h4>EPILEPSY MODE</h4>
+        <p>Play some animations on LED panel...</p>
+    </a>
+    <a href='snake' class="col-sm-4 home-link">
+      <img src='<%= image_url('snake.png') %>'>
       <h4>SNAKE</h4>
       <p>Bring back the 90s!</p>
-    </div>
+    </a>
   </div>
 </div>
